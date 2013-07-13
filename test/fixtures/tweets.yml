@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  term_id: 1
+  owner_uid: MyString
+  favorited: false
+  converted: false
+
+two:
+  term_id: 1
+  owner_uid: MyString
+  favorited: false
+  converted: false

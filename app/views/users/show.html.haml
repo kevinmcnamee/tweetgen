@@ -1,0 +1,26 @@
+%h1= @user.name
+.row-fluid
+	.span6.offset3
+		- @campaigns.each do |campaign|
+			.row-fluid
+				.span12
+					User #{@user.id}
+					Campaign #{campaign.id}
+					%table.table.table-striped.table-bordered.table-hover
+						%thead
+							%th Active Terms
+							%th Tone
+							%th Impressions
+							%th Conversion
+							%th Follows
+						%tbody
+							-campaign.terms.each do |term|
+								%tr
+									%td= term.word
+									%td= term.tone
+									%td= term.impressions
+									%td= term.conversion_rate
+									%td= term.follows
+
+					= link_to 'Edit', edit_user_campaign_path(@user.id, campaign.id), class: 'btn btn-info'
+					= link_to 'Trigger', favorite_user_campaign_path(@user.id, campaign.id), class: 'btn btn-warning'

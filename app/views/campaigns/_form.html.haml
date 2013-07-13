@@ -1,0 +1,12 @@
+= simple_form_for [:user, @campaign] do |f|
+
+	- 3.times do
+		= f.simple_fields_for :terms do |t|
+			.row-fluid
+				.span6
+					= t.input :word, autocomplete: false
+				.span6
+					= t.input :tone, collection: tones
+
+	= f.submit
+	

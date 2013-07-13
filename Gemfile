@@ -8,7 +8,6 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'omniauth-twitter'
 gem "twitter-bootstrap-rails"
-gem 'debugger'
 gem 'quiet_assets'
 gem 'thin'
 gem 'haml-rails'
@@ -29,6 +28,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development do 
+	gem 'debugger'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

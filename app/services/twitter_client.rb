@@ -3,6 +3,8 @@ class TwitterClient
 
 	def initialize(token, secret)
 		@client = Twitter::Client.new(
+			consumer_key: 'k9boEuIJ1Z6ua8O9DYmXRA',
+			consumer_secret: 'PM4Eyun0ApD7Y5vQc9RjCOxjCF8WUTOnaek2jGDJDA',
 			oauth_token: token, 
 			oauth_token_secret: secret
 		)

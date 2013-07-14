@@ -11,33 +11,38 @@ class TwitterClient
 	def initialize_campaign_action(campaign)
 		tweets = []
 		campaign.terms.each do |term|
-			tweets << tweets_for_term(search_term(term))
+			tweets << tweets_for_term(search_term(term), term.id)
 		end
-		tweets
-		tweets = tweets.flatten.uniq.keep_if { |tweet| !tweet[:been_favorited] }
-		favorite_tweets(tweets, term)
+		tweets = tweets.flatten.uniq.compact
+		tweets = tweets.keep_if { |tweet| !tweet[:been_favorited] }
+		favorite_tweets(tweets)
 	end
 
-	def tweets_for_term(term)
-		tweets = 	client.search(term, count: 10, result_type: "recent").results.map do |result|
-								{
-									uid: 						result.id,
-									owner_uid: 			result.user.id,
-									created: 				result.created_at,
-									been_favorited: result.favorited,
-									text: 					result.text	
-								}
-							end
-		tweets
+	def tweets_for_term(term, term_id=nil)
+		if term.blank?
+			tweets = nil
+		else
+			tweets = 	client.search(term, count: 10, result_type: "recent").results.map do |result|
+									{
+										uid: 						result.id,
+										owner_uid: 			result.user.id,
+										created: 				result.created_at,
+										been_favorited: result.favorited,
+										text: 					result.text,
+										term_id: 				term_id
+									}
+								end
+			tweets
+		end
 	end
 
-	def favorite_tweets(tweets, term)
+	def favorite_tweets(tweets)
 		tweets.each do |t|
 			client.favorite(t[:uid])
 			Tweet.create(uid: 							t[:uid],
 									favorited: 					true,
 									owner_uid: 					t[:owner_uid],
-									term_id: 						term.id,
+									term_id: 						t[:term_id],
 									created: 						t[:created])
 		end
 	end

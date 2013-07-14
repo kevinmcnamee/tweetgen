@@ -25,7 +25,7 @@
 					= link_to 'Edit', edit_user_campaign_path(@user.id, campaign.id), class: 'btn btn-info'
 					= link_to 'Trigger', favorite_user_campaign_path(@user.id, campaign.id), class: 'btn btn-warning'
 
-	.span6
+	.span6.well
 		= render partial: '/campaigns/search_form'
 
 		#search-results

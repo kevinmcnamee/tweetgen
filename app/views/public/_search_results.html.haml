@@ -1,3 +1,4 @@
+%hr
 -@tweets.each do |tweet|
 	%p.strong= tweet[:text]
 	%p= tweet[:created].strftime("%b #{tweet[:created].day.ordinalize} %-l:%M%P")

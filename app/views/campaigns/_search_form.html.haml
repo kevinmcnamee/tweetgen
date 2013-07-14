@@ -1,3 +1,7 @@
-= form_tag({controller: "public", action: "search"}, {remote: true}) do
-	= text_field_tag :word
-	= submit_tag "Search", class: 'btn btn-success'
+.row-fluid
+	%h3.center Use this search to find the terms that best match your target audience
+.row-fluid
+	.span12
+		= form_tag({controller: "public", action: "search"}, {remote: true, class: 'center'}) do
+			= text_field_tag :word
+			= submit_tag "Search", class: 'btn btn-success'

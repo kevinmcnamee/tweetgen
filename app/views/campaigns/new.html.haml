@@ -1,4 +1,10 @@
-%h1= @user.name
+.page-header
+	%h1= @user.name
 .row-fluid
-	.span6.offset3
+	.span6
 		= render partial: 'form'
+
+	.span6
+		= render partial: 'search_form'
+
+		#search-results

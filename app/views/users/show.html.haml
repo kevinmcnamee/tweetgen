@@ -1,8 +1,8 @@
 %h1= @user.name
 .row-fluid
-	.span6.offset3
+	.span6
 		- @campaigns.each do |campaign|
-			.row-fluid
+			.row-fluid.campaign-stats
 				.span12
 					User #{@user.id}
 					Campaign #{campaign.id}
@@ -24,3 +24,8 @@
 
 					= link_to 'Edit', edit_user_campaign_path(@user.id, campaign.id), class: 'btn btn-info'
 					= link_to 'Trigger', favorite_user_campaign_path(@user.id, campaign.id), class: 'btn btn-warning'
+
+	.span6
+		= render partial: '/campaigns/search_form'
+
+		#search-results

@@ -4,9 +4,9 @@
 		= f.simple_fields_for :terms do |t|
 			.row-fluid
 				.span6
-					= t.input :word, autocomplete: false
+					= t.input :word, autocomplete: false, label: 'Enter Search Term'
 				.span6
-					= t.input :tone, collection: tones
+					= t.input :tone, collection: tones, label: 'Select a Tone (Optional)'
 
-	= f.submit
+	%h2= f.submit 'Create Campaign', class: 'btn btn-success btn-large'
 	

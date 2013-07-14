@@ -6,6 +6,8 @@ Frothly::Application.routes.draw do
 			get 'favorite', on: :member
 		end
 	end
+
+	match '/search', to: 'public#search', as: :search
   
   root to: 'public#index'
   
